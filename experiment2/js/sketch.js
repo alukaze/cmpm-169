@@ -1,30 +1,10 @@
-// sketch.js - purpose and description here
-// Author: Your Name
-// Date:
+/* exported setup, draw */
+let seed = 0;
 
-// Here is how you might set up an OOP p5.js project
-// Note that p5.js looks for a file called sketch.js
-
-// Constants - User-servicable parts
-// In a longer project I like to put these in a separate file
-const VALUE1 = 1;
-const VALUE2 = 2;
-
-// Globals
-let myInstance;
-let canvasContainer;
-var centerHorz, centerVert;
-
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
-
-    myMethod() {
-        // code to run when method is called
-    }
-}
+// listener for reimagine button
+$("#clicker").click(function() {
+  seed++;
+});
 
 function resizeScreen() {
   centerHorz = canvasContainer.width() / 2; // Adjusted for drawing logic
@@ -34,46 +14,75 @@ function resizeScreen() {
   // redrawCanvas(); // Redraw everything based on new size
 }
 
-// setup() function is called once when the program starts
-function setup() {
-  // place our canvas, making it fit our container
+function setup() {  
   canvasContainer = $("#canvas-container");
   let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvas.parent("canvas-container");
-  // resize canvas is the page is resized
-
-  // create an instance of the class
-  myInstance = new MyClass("VALUE1", "VALUE2");
-
   $(window).resize(function() {
     resizeScreen();
   });
   resizeScreen();
 }
 
-// draw() function is called repeatedly, it's the main animation loop
+
 function draw() {
-  background(220);    
-  // call a method on the instance
-  myInstance.myMethod();
+  randomSeed(seed);
 
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
+  let color1 = color(random(0, 255), random(0, 255), random(0, 255));
+  let color2 = color(random(0, 255), random(0, 255), random(0, 255));
+  
+  setGradient(0, 0, width, height, color1, color2);
+
+  let sunBrightness = random(200, 255);
+
+  fill(255, 204, 0, sunBrightness);
   noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
-
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
+  ellipse(width / 3 + random(-15, 15), height / 2 + random(-15, 15), 100, 100);
+  
+  drawClouds();
+  
+  let waveHeight1 = random(350, 450);
+  drawWaves(waveHeight1, color(0, 255, 255), random(0.02, 0.04), random(0.01, 0.05), random(1.19, 1.21), random(-PI / 4, PI / 4));
+  
+  let waveHeight2 = random(380, 450);
+  drawWaves(waveHeight2, color(0, 128, 128), random(0.01, 0.03), random(0.015, 0.025), random(9.99, 10.01), random(-PI / 4, PI / 4));
+  
+  let waveHeight3 = random(waveHeight2 + 25, 500);
+  drawWaves(waveHeight3, color(75, 0, 130), random(0.04, 0.06), random(0.02, 0.04), random(14.9, 15.1), random(-PI / 4, PI / 4));
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
-function mousePressed() {
-    // code to run when mouse is pressed
+function drawWaves(waveHeight, color, speed, frequency, amplitude, phase) {
+  noStroke();
+  fill(color);
+  beginShape();
+  vertex(0, height);
+  for (let x = 0; x < width; x += 5) {
+    let y = waveHeight + sin(x * frequency + frameCount * speed + phase) * amplitude;
+    vertex(x, y);
+  }
+  vertex(width, height);
+  endShape(CLOSE);
+}
+
+function setGradient(x, y, width, height, color1, color2) {
+  noFill();
+  for (let i = y; i <= y + height; i++) {
+    let gradientPosition = map(i, y, y + height, 0, 1);
+    let gradientColor = lerpColor(color1, color2, gradientPosition);
+    stroke(gradientColor);
+    line(x, i, x + width, i);
+  }
+}
+
+function drawClouds() {
+  let numClouds = random(5, 10);
+  for (let i = 0; i < numClouds; i++) {
+    let cloudX = random(width);
+    let cloudY = random(height / 4);
+    let cloudSize = random(50, 200);
+    fill(255, 200);
+    ellipse(cloudX, cloudY, cloudSize, cloudSize / 2);
+    ellipse(cloudX + cloudSize / 3, cloudY - cloudSize / 5, cloudSize, cloudSize / 2);
+    ellipse(cloudX + cloudSize / 6, cloudY + cloudSize / 4, cloudSize, cloudSize / 2);
+  }
 }
