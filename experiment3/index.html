@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 3 - Alternate Worlds</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -32,11 +32,34 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 3 - Alternate Worlds</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
-					<!-- canvas will be added here -->
+					<head>
+						<meta charset="utf-8" />
+						<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+						<meta name="viewport" content="width=device-width, initial-scale=1" />
+					
+						<title>Alternate Worlds</title>
+					
+						<script
+						  src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"
+						  integrity="sha512-b/htz6gIyFi3dwSoZ0Uv3cuv3Ony7EeKkacgrcVg8CMzu90n777qveu0PBcbZUA7TzyENGtU+qZRuFAkfqgyoQ=="
+						  crossorigin="anonymous"
+						></script>
+						<script src="/p2_base.js" defer></script>
+						<script src="/p2_solution.js" defer></script>
+					  </head>
+					  <body>
+						<button id="reseedButton">
+						  reseed
+						</button>
+						<span id="seedReport"></span>
+						<hr />
+						<span id="canvasContainer" style="margin: 10px;"></span>
+						<textarea cols="20" rows="20" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea>
+					  </body>
 				</div>
                 <div class="fullscreen-box">
                     <button id="fullscreen">Fullscreen</button>
@@ -45,22 +68,22 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>Generator for a simple piece of the overworld.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<p>Generator uses a grid of code and autotiling in order to place the correct tile on the screen based on surrounding grid data.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>I am quite happy with my Generator. I know its not perfect but I learned a lot about auto tiling and I think it is a decent first attempt with it. </p>
 			</div>
 
 		</section>
 		<nav id="links" class="minor-section">
-			<!-- Put link back to homepage here. -->
+			<https://dexhoang.github.io/cmpm147/>
             <ul>
                 <li><a href="../index.html">Home</a></li>
             </ul>
