@@ -1,6 +1,6 @@
 // sketch.js - purpose and description here
-// Author: Your Name
-// Date:
+// Author: Alan Lu
+// Date: 4/24/2024
 
 // Here is how you might set up an OOP p5.js project
 // Note that p5.js looks for a file called sketch.js
@@ -159,22 +159,19 @@ function generateGrid(numCols, numRows) {
     grid.push(row);
   }
 
-  // Randomly pick groups of tiles to set to 'c'
-  let numGroups = floor(random(2, 6)); // Increased maximum number of groups by 1
+  let numGroups = floor(random(2, 6)); 
   for (let g = 0; g < numGroups; g++) {
-    let groupSize = floor(random(3, 16)); // Doubled the maximum group size
-    let startX = floor(random(numCols)); // Random start X coordinate
-    let startY = floor(random(numRows)); // Random start Y coordinate
+    let groupSize = floor(random(3, 16)); 
+    let startX = floor(random(numCols)); 
+    let startY = floor(random(numRows)); 
 
-    let centerX = startX + floor(groupSize / 2); // Calculate the center X coordinate of the group
-    let centerY = startY + floor(groupSize / 2); // Calculate the center Y coordinate of the group
+    let centerX = startX + floor(groupSize / 2); 
+    let centerY = startY + floor(groupSize / 2); 
 
     for (let i = startY; i < startY + groupSize && i < numRows; i++) {
       for (let j = startX; j < startX + groupSize && j < numCols; j++) {
         if (i >= 0 && j >= 0) {
-          // Calculate the distance from the current tile to the center of the group
           let distance = sqrt(pow(j - centerX, 2) + pow(i - centerY, 2));
-          // If the distance is within a circular boundary, set the tile to 'c'
           if (distance <= groupSize / 2) {
             grid[i][j] = 'c';
           }
