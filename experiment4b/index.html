@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 4b - Infinite Magma</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->    <script type="text/javascript" src="../js/site.js" DEFER></script>   
+    <script src="js/xxhash.min.js" defer></script>
+    <script src="js/engine.js" defer></script>
+    <script src="js/my_world.js" defer></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 4b - Infinite Magma</h1>
+
+			<div class="minor-section">
+				<div id="canvas-container">
+					<!-- canvas will be added here -->
+				</div>
+                <div class="fullscreen-box instructions">
+                    <div>
+                        Arrow keys scroll. Clicking changes tiles.
+                    </div>
+                    <div>
+                        World seed: <input type="text" id="world-seed" value="xyzzy">
+                    </div>
+                    <button id="fullscreen">Fullscreen</button>
+                </div>
+			</div>
+
+			<div class="minor-section two-columns">
+                <div class="showcase-img">
+                    <img src="https://cdn.glitch.global/40f63935-3c94-4714-9d23-8548897edaa1/Lava.png?v=1714995944215" alt="Magma" />
+                </div>
+                <div>
+                    <h2>Description</h2>
+                    <p>Precedurally generated magma. Inspired by various images of magma, I tried to imitate the streaks of magma as if it were flowing. </p>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>I utilize a combination of procedural generation algorithms to create a dynamically evolving virtual landscape. This experiemnt also uses hashing that the user can manipulate to get different seeds of their choice.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>This one was really rough for me. I am satisfied with how it looks but I was unable to get my animations/3d effect to work and I am quite bummed out about it.</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
